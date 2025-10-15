@@ -30,8 +30,23 @@ router.get("/:id", (req, res) => {
       .json({ msg: `A post with the id of ${id} was not found` });
   }
   res.status(200).json(post);
+});
 
-  // res.status(200).json(posts.filter((post) => post.id === id));
+//Create new post
+
+router.post("/", (req, res) => {
+  const newPost = {
+    id: posts.length + 1,
+    title: req.body.title,
+  };
+
+  if (!newPost.title) {
+    return res.status(400).json({ msg: "Please include a title" });
+  }
+
+  console.log(newPost);
+  posts.push(newPost);
+  res.status(201).json(posts);
 });
 
 export default router;
