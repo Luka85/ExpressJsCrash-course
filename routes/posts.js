@@ -1,4 +1,5 @@
 import express from "express";
+
 const router = express.Router();
 
 let posts = [
@@ -6,11 +7,12 @@ let posts = [
   { id: 2, title: "Post two" },
   { id: 3, title: "Post three" },
 ];
+
 //Get all posts
 router.get("/", (req, res) => {
   const limit = parseInt(req.query.limit);
 
-  console.log(limit);
+  //   console.log(limit);
   if (!isNaN(limit) && limit > 0) {
     return res.status(200).json(posts.slice(0, limit));
   }
@@ -23,7 +25,7 @@ router.get("/:id", (req, res) => {
   // console.log(req.params);
   const post = posts.find((post) => post.id === id);
 
-  console.log(post);
+  //   console.log(post);
   if (!post) {
     return res
       .status(404)
