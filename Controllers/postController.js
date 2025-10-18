@@ -50,7 +50,7 @@ export const createPost = (req, res, next) => {
   }
 
   posts.push(newPost);
-  res.status(201).json(posts);
+  res.status(201).json(newPost);
 };
 
 //@desc Update post
